@@ -23,13 +23,14 @@
   function c(e) {
     return void 0 === e ? "" : "string" == typeof e ? e : e.message
   }
-  var i = (s.prototype.getBars = function(e, t, r, s, f) {
+  var i = (s.prototype.getBars = function(e, t, r, s, f, realBar) {
     var o = this,
       i = {
         symbol: e.ticker || "",
         resolution: t,
         from: r,
-        to: s
+        to: s,
+        realBar: !!realBar
       };
     return new Promise(function(a, u) {
       o._requester.sendRequest(o._datafeedUrl, "history", i).then(function(e) {
@@ -104,7 +105,7 @@
         return 24 * ("D" === e || "1D" === e ? t : "M" === e || "1M" === e ? 31 * t : "W" === e || "1W" === e ? 7 *
           t : t * parseInt(e) / 1440) * 60 * 60
       }(e.resolution, 10);
-    return this._historyProvider.getBars(e.symbolInfo, e.resolution, o, s).then(function(e) {
+    return this._historyProvider.getBars(e.symbolInfo, e.resolution, o, s, false, true).then(function(e) {
       r._onSubscriberDataReceived(t, e)
     })
   }, o.prototype._onSubscriberDataReceived = function(e, t) {
@@ -406,8 +407,8 @@
         n("UdfCompatibleDatafeed: Error resolving symbol: " + c(e)), r("unknown_symbol")
       })
     }
-  }, b.prototype.getBars = function(e, t, r, s, o, i, first) {
-    this._historyProvider.getBars(e, t, r, s, first).then(function(e) {
+  }, b.prototype.getBars = function(e, t, r, s, o, i, first, realBar) {
+    this._historyProvider.getBars(e, t, r, s, first, realBar).then(function(e) {
       o(e.bars, e.meta)
     }).catch(i)
   }, b.prototype.subscribeBars = function(e, t, r, s, o) {

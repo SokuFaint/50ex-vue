@@ -24,7 +24,7 @@
         symbol: this.$route.query.symbol, //商品标识  必须是字符串
         interval: "1M", //初始化显示分钟刻度 用到websocekt 在用JSapi
         container_id: "tv_chart_container",
-        datafeed: new Datafeeds.UDFCompatibleDatafeed('http://pre-m.50ex.com/api/cd_kline', 2000),
+        datafeed: new Datafeeds.UDFCompatibleDatafeed('https://ffapi.myfastapi.com/cd_kline', 2000),
         // datafeed: new Datafeeds.UDFCompatibleDatafeed('https://ffapi.myfastapi.com/cd_kline', 2000),
         library_path: "/static/charting_library/",
         locale: "zh", //语言
