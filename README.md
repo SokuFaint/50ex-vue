@@ -1,6 +1,11 @@
-# my-btex
+# 50ex交易所-vue前端程序
 
-> A Vue.js project
+> Vue front-side application for 50ex exchange
+
+## 在线地址
+
+交易所地址： http://50ex.com/
+预上线地址： https://pre-m.50ex.com/
 
 ## Build Setup
 
